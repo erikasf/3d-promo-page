@@ -1,0 +1,136 @@
+<!Doctype html>
+<html>
+<head>
+<style>
+/*Custom Font*/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
+nav img{
+	margin-top:30px;
+	width:190px;
+	margin-left:10%;
+	background: 
+		linear-gradient(20degree, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), 
+}
+nav h1{
+	margin-left:-35px;
+	margin-top: -25px;
+}
+	
+
+	
+
+/*Basic Reset*/
+.grid {margin-left: 20%; padding: 0;}
+
+body {
+	background: #333;
+	/*Removing scrollers*/
+	overflow: hidden;
+	/*A high perspective to give the UL an isometric look*/
+	perspective: 3000;
+}
+
+h1 {
+	color: white;
+	font: 45px 'Open Sans';
+	width: 500px;
+	padding: 50px;
+}
+
+.grid {
+	position: absolute; top: 100px; left: 100;
+	/*Width = (225 + 20 + 20) * 4 = 1060*/
+	width: 1060px;
+	/*3D Transform*/
+	transform: rotateX(60deg) rotateZ(-50deg);
+	/*Preserve 3D style for children*/
+	transform-style: preserve-3d;
+}
+.grid li {
+	height: 400px; width: 225px;
+	float: left; margin: 20px;
+	list-style-type: none;
+	/*Hide the lighting gradient from the front face*/
+	background-size: 0, cover;
+	/*Preserve 3D style for children(pseudo elements)*/
+	transform-style: preserve-3d;
+}
+/*Left and Bottom Sides*/
+.grid li:before, .grid li:after {
+	content: '';
+	position: absolute;
+	/*100% height and width*/
+	top: 0; left: 0; right: 0; bottom: 0;
+	background: inherit;
+	background-size: cover;
+}
+/*Left Side*/
+.grid li:before {
+	transform-origin: left center;
+	transform: rotateY(90deg);
+	/*Reducing the width of the left side for a flat feel*/
+	width: 5px;
+}
+/*Bottom Side*/
+.grid li:after {
+	transform-origin: bottom center;
+	transform: rotateX(90deg);
+	/*Reducing the height*/
+	height: 5px; top: auto; bottom: 0;
+	/*Background fix - start the background from the bottom*/
+	background-position: bottom center;
+}
+/*Shadow time - sadly all pseudo elements are used so we will have to add an HTML element in each LI*/
+.s {
+	position: absolute;
+	/*30px smaller from each side*/
+	top: 30px; left: 30px; right: 30px; bottom: 30px;
+	background: rgba(0, 0, 0, 0.5);
+	box-shadow: 0 0 30px 30px rgba(0, 0, 0, 0.5);
+	/*Pushing down the shadow to give an elevated feel*/
+	transform: translateZ(-50px);
+}
+
+/*We will add a light gradient to the sides to give some lighting effect*/
+.one {
+	background: 
+		linear-gradient(45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), 
+		url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/224685/66cd1b1806ed4b8d979a98c52014391c.jpg");
+}
+.two {
+	background: 
+		linear-gradient(45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), 
+		url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/224685/916168ab456f4e97bf37a8c55d21adcc.jpg");
+}
+.three {
+	background: 
+		linear-gradient(45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), 
+		url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/224685/7d24d37db86d49af98110e75e0d4fa7e.jpg");
+}
+.four {
+	background: 
+		linear-gradient(45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), 
+		url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/224685/823c130525e6415c83581be450d61640.jpg");
+}
+
+
+
+</style>
+</head>
+<body>
+
+
+
+<nav>
+	<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/224685/REDLOGO.jpg" margin-top="-100px">
+	<h1>TruckSpot Mobile App</h1>
+
+</nav>
+<ul class="grid">
+	<li class="one"><span class="s"></span></li>
+	<li class="two"><span class="s"></span></li>
+	<li class="three"><span class="s"></span></li>
+	<li class="four"><span 
+</ul>
+</body>
+</html>
